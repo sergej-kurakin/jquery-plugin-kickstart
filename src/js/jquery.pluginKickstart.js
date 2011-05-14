@@ -120,22 +120,16 @@
 
 	}
 
-	// methods that are available public
+	// methods that are available public, most code taken from http://docs.jquery.com/Plugins/Authoring
 	var methods = {
 		// public initiation with settings
 		init: function(settings) {
-
 			return this.each(function() {
-
 				var $this = $(this);
-
 				// building object
 				var obj = new myPluginKickstart(this, settings);
-
 				$this.data(namespace, obj);
-
 			});
-
 		},
 		// show method
 		show: function() {
@@ -173,7 +167,7 @@
 		}
 	};
 
-	// plugin association
+	// plugin association, code from http://docs.jquery.com/Plugins/Authoring
 	$.fn.pluginKickstart = function(method) {
 
 		// Method calling logic
