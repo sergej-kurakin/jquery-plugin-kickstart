@@ -15,48 +15,34 @@
 
         base.settings.inside++;
 
-        // does nothing except console and increment
+        // does nothing except increment
         base.show = function() {
             base.settings.inside++;
-            console.log('show');
-            base.showTest();
         };
 
-        // does nothing except console and increment, changes text of the binded object
+        // does nothing except increment, changes text of the binded object
         base.hide = function() {
             base.settings.inside++;
-            console.log('hide');
-            base.showTest();
             base.$obj.text('Hide!' + base.settings.text);
         };
 
         // update content of the settings.text and changes text of the binded object
         base.update = function(content) {
             base.settings.inside++;
-            console.log('update');
-            base.showTest();
             base.settings.text = content;
-            base.showTest();
             base.$obj.text('Update! ' + base.settings.text);
 
-        };
-
-        // just a function to do same every time
-        base.showTest = function() {
-            console.log('test: ' + this.settings.text + ' inside: ' + this.settings.inside);
         };
 
         // method called on mouse click
         base.click = function() {
             base.settings.inside++;
             base.$obj.css('color', 'red');
-            base.showTest();
         }
 
         // method called on mouseover: starts animation with interval
         base.over = function() {
             base.settings.inside++;
-            base.showTest();
             base.animate = true;
 
             base.animateIntervalId = setInterval(function() {
@@ -68,7 +54,6 @@
         // method called on mouseout, stops animation
         base.out = function() {
             base.settings.inside++;
-            base.showTest();
             base.animate = false;
             clearInterval(base.animateIntervalId);
         }
@@ -107,21 +92,16 @@
 
             base.$obj.bind('mouseover.' + namespace,
             function() {
-                console.log('over');
                 base.over();
             });
 
             base.$obj.bind('mouseout.' + namespace,
             function() {
-                console.log('out');
                 base.out();
             });
         }
 
         base.bindEvents();
-
-        console.log('init');
-        base.showTest();
 
     }
 
