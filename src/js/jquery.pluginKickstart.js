@@ -93,23 +93,23 @@
 				$this.data(namespace, obj);
 			});
 		},
-		// public show method
-		showSometing: function() {
+		// public showSomething method
+		showSomething: function() {
 			return this.each(function() {
 				var $this = $(this);
 				var obj = $this.data(namespace);
-				obj.showSometing();
+				obj.showSomething();
 			});
 		},
-		// public hide method
-		hideSometing: function() {
+		// public hideSomething method
+		hideSomething: function() {
 			return this.each(function() {
 				var $this = $(this);
 				var obj = $this.data(namespace);
-				obj.hideSometing();
+				obj.hideSomething();
 			});
 		},
-		// public update method
+		// public updateData method
 		updateData: function(content) {
 			return this.each(function() {
 				var $this = $(this);
