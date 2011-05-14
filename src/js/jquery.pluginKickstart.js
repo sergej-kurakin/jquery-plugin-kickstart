@@ -4,83 +4,84 @@
 
     // plugin class that does all work
     function myPluginKickstart(obj, settings) {
-        this.settings = settings;
-		this.obj = obj; // actual DOM element
-        this.$obj = $(obj); // jQuery version of DOM element
-        this.animate = false;
-        this.animateIntervalId = 0;
+		
+		var base = this;
+		
+        base.settings = settings;
+		base.obj = obj; // actual DOM element
+        base.$obj = $(obj); // jQuery version of DOM element
+        base.animate = false;
+        base.animateIntervalId = 0;
 
-        this.settings.inside++;
+        base.settings.inside++;
 
         // does nothing except console and increment
-        this.show = function() {
-            this.settings.inside++;
+        base.show = function() {
+            base.settings.inside++;
             console.log('show');
-            this.showTest();
+            base.showTest();
         };
 
         // does nothing except console and increment, changes text of the binded object
-        this.hide = function() {
-            this.settings.inside++;
+        base.hide = function() {
+            base.settings.inside++;
             console.log('hide');
-            this.showTest();
-            this.$obj.text('Hide!' + this.settings.text);
+            base.showTest();
+            base.$obj.text('Hide!' + base.settings.text);
         };
 
         // update content of the settings.text and changes text of the binded object
-        this.update = function(content) {
-            this.settings.inside++;
+        base.update = function(content) {
+            base.settings.inside++;
             console.log('update');
-            this.showTest();
-            this.settings.text = content;
-            this.showTest();
-            this.$obj.text('Update! ' + this.settings.text);
+            base.showTest();
+            base.settings.text = content;
+            base.showTest();
+            base.$obj.text('Update! ' + base.settings.text);
 
         };
 
         // just a function to do same every time
-        this.showTest = function() {
+        base.showTest = function() {
             console.log('test: ' + this.settings.text + ' inside: ' + this.settings.inside);
         };
 
         // method called on mouse click
-        this.click = function() {
-            this.settings.inside++;
-            this.$obj.css('color', 'red');
-            this.showTest();
+        base.click = function() {
+            base.settings.inside++;
+            base.$obj.css('color', 'red');
+            base.showTest();
         }
 
         // method called on mouseover: starts animation with interval
-        this.over = function() {
-            this.settings.inside++;
-            this.showTest();
-            this.animate = true;
+        base.over = function() {
+            base.settings.inside++;
+            base.showTest();
+            base.animate = true;
 
-            var intervalObj = this;
-
-            this.animateIntervalId = setInterval(function() {
-                intervalObj.animateObj();
+            base.animateIntervalId = setInterval(function() {
+                base.animateObj();
             },
             100);
         }
 
         // method called on mouseout, stops animation
-        this.out = function() {
-            this.settings.inside++;
-            this.showTest();
-            this.animate = false;
-            clearInterval(this.animateIntervalId);
+        base.out = function() {
+            base.settings.inside++;
+            base.showTest();
+            base.animate = false;
+            clearInterval(base.animateIntervalId);
         }
 
         // just do anmation
-        this.animateObj = function() {
-            if (this.animate) {
-                this.$obj.css('color', this.randomColor());
+        base.animateObj = function() {
+            if (base.animate) {
+                base.$obj.css('color', base.randomColor());
             }
         }
 
         // collor randomaizer
-        this.randomColor = function() {
+        base.randomColor = function() {
             function c() {
                 return Math.floor(Math.random() * 256).toString(16);
             }
@@ -88,41 +89,39 @@
         }
 
         // should destroy objects, done to test unbind
-        this.destroy = function() {
-            if (this.animate) {
-                this.animate = false;
-                clearInterval(this.animateIntervalId);
+        base.destroy = function() {
+            if (base.animate) {
+                base.animate = false;
+                clearInterval(base.animateIntervalId);
             }
-            this.$obj.unbind('.' + namespace);
-            delete this.$obj;
+            base.$obj.unbind('.' + namespace);
         }
 
         // event binder inside method
-        this.bindEvents = function() {
-            var mySelf = this;
+        base.bindEvents = function() {
 
-            this.$obj.bind('click.' + namespace,
+            base.$obj.bind('click.' + namespace,
             function() {
-                mySelf.click();
+                base.click();
             });
 
-            this.$obj.bind('mouseover.' + namespace,
+            base.$obj.bind('mouseover.' + namespace,
             function() {
                 console.log('over');
-                mySelf.over();
+                base.over();
             });
 
-            this.$obj.bind('mouseout.' + namespace,
+            base.$obj.bind('mouseout.' + namespace,
             function() {
                 console.log('out');
-                mySelf.out();
+                base.out();
             });
         }
 
-        this.bindEvents();
+        base.bindEvents();
 
         console.log('init');
-        this.showTest();
+        base.showTest();
 
     }
 
