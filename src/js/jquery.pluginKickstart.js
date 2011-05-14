@@ -1,4 +1,4 @@
-(function($) {
+(function ($) {
 
 	var namespace = 'pluginKickstart';
 
@@ -32,22 +32,22 @@
 		};
 
 		// public Something method
-		base.showSomething = function() {
+		base.showSomething = function () {
 			// code for Something method
 		};
 
 		// public Something method
-		base.hideSomething = function() {
+		base.hideSomething = function () {
 			// code for Something method
 		};
 
 		// public updateData method
-		base.updateData = function(content) {
+		base.updateData = function (content) {
 			// code for updateData method using data from content parameter
 		};
 
 		// public destroy method
-		base.destroy = function() {
+		base.destroy = function () {
 			// code for object destruction
 			
 			// example of unbind call to unbind only events from this plugin
@@ -55,24 +55,24 @@
 		};
 
 		// private method, used from within this plugin
-		base.over = function() {
+		base.over = function () {
 			base.$obj.css('color', 'red');
 		};
 
 		// private method, used from within this plugin
-		base.out = function() {
+		base.out = function () {
 			base.$obj.css('color', 'black');
 		};
 
 		// private method, used from within this plugin
-		base.bindEvents = function() {
+		base.bindEvents = function () {
 			base.$obj.bind('mouseenter.' + namespace,
-				function() {
+				function () {
 					base.over();
 				});
 
 			base.$obj.bind('mouseleave.' + namespace,
-				function() {
+				function () {
 					base.out();
 				});
 		};
@@ -85,8 +85,8 @@
 	// methods that are available public, most code taken from http://docs.jquery.com/Plugins/Authoring
 	var methods = {
 		// public initiation with settings
-		init: function(settings) {
-			return this.each(function() {
+		init: function (settings) {
+			return this.each(function () {
 				var $this = $(this);
 				// building object
 				var obj = new myPluginKickstart(this, settings);
@@ -94,32 +94,32 @@
 			});
 		},
 		// public showSomething method
-		showSomething: function() {
-			return this.each(function() {
+		showSomething: function () {
+			return this.each(function () {
 				var $this = $(this);
 				var obj = $this.data(namespace);
 				obj.showSomething();
 			});
 		},
 		// public hideSomething method
-		hideSomething: function() {
-			return this.each(function() {
+		hideSomething: function () {
+			return this.each(function () {
 				var $this = $(this);
 				var obj = $this.data(namespace);
 				obj.hideSomething();
 			});
 		},
 		// public updateData method
-		updateData: function(content) {
-			return this.each(function() {
+		updateData: function (content) {
+			return this.each(function () {
 				var $this = $(this);
 				var obj = $this.data(namespace);
 				obj.updateData(content);
 			});
 		},
 		// public destroy method
-		destroy: function() {
-			return this.each(function() {
+		destroy: function () {
+			return this.each(function () {
 				var $this = $(this);
 				var obj = $this.data(namespace);
 				obj.destroy();
@@ -130,7 +130,7 @@
 	};
 
 	// plugin association, code from http://docs.jquery.com/Plugins/Authoring
-	$.fn.pluginKickstart = function(method) {
+	$.fn.pluginKickstart = function (method) {
 
 		// Method calling logic
 		if (methods[method]) {

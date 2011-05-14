@@ -1,4 +1,4 @@
-(function($) {
+(function ($) {
 
 	var namespace = 'pluginKickstart';
 
@@ -39,19 +39,19 @@
 		};
 
 		// does nothing except increment
-		base.showSomething = function() {
+		base.showSomething = function () {
 			base.settings.inside++;
 			base.$colorSpan.show();
 		};
 
 		// does nothing except increment, changes text of the binded object
-		base.hideSomething = function() {
+		base.hideSomething = function () {
 			base.settings.inside++;
 			base.$colorSpan.hide();
 		};
 
 		// update content of the settings.text and changes text of the binded object
-		base.updateData = function(content) {
+		base.updateData = function (content) {
 			base.settings.inside++;
 			base.settings.defaultText = content;
 			base.$obj.text(base.settings.defaultText);
@@ -59,7 +59,7 @@
 		};
 		
 		// should destroy objects, done to test unbind
-		base.destroy = function() {
+		base.destroy = function () {
 			if (base.animate) {
 				base.animate = false;
 				clearInterval(base.animateIntervalId);
@@ -68,7 +68,7 @@
 		};
 
 		// method called on mouse click
-		base.click = function() {
+		base.click = function () {
 			base.settings.inside++;
 			if (base.animate) {
 				base.animate = false;
@@ -77,18 +77,18 @@
 		};
 
 		// method called on mouseover: starts animation with interval
-		base.over = function() {
+		base.over = function () {
 			base.settings.inside++;
 			base.animate = true;
 
-			base.animateIntervalId = setInterval(function() {
+			base.animateIntervalId = setInterval(function () {
 				base.animateObj();
 			},
-			100);
+				100);
 		};
 
 		// method called on mouseout, stops animation
-		base.out = function() {
+		base.out = function () {
 			base.settings.inside++;
 			if (base.animate) {
 				base.animate = false;
@@ -97,7 +97,7 @@
 		};
 
 		// just do anmation
-		base.animateObj = function() {
+		base.animateObj = function () {
 			if (base.animate) {
 				var color = base.randomColor();
 				base.$colorSpan.text(color);
@@ -106,7 +106,7 @@
 		};
 
 		// collor randomaizer
-		base.randomColor = function() {
+		base.randomColor = function () {
 			function c() {
 				return Math.floor(Math.random() * 256).toString(16);
 			}
@@ -114,20 +114,20 @@
 		};
 
 		// event binder inside method
-		base.bindEvents = function() {
+		base.bindEvents = function () {
 
 			base.$obj.bind('click.' + namespace,
-				function() {
+				function () {
 					base.click();
 				});
 
 			base.$obj.bind('mouseenter.' + namespace,
-				function() {
+				function () {
 					base.over();
 				});
 
 			base.$obj.bind('mouseleave.' + namespace,
-				function() {
+				function () {
 					base.out();
 				});
 		};
@@ -140,8 +140,8 @@
 	// methods that are available public, most code taken from http://docs.jquery.com/Plugins/Authoring
 	var methods = {
 		// public initiation with settings
-		init: function(settings) {
-			return this.each(function() {
+		init: function (settings) {
+			return this.each(function () {
 				var $this = $(this);
 				// building object
 				var obj = new myPluginKickstart(this, settings);
@@ -149,32 +149,32 @@
 			});
 		},
 		// public showSomething method
-		showSomething: function() {
-			return this.each(function() {
+		showSomething: function () {
+			return this.each(function () {
 				var $this = $(this);
 				var obj = $this.data(namespace);
 				obj.showSomething();
 			});
 		},
 		// public hideSomething method
-		hideSomething: function() {
-			return this.each(function() {
+		hideSomething: function () {
+			return this.each(function () {
 				var $this = $(this);
 				var obj = $this.data(namespace);
 				obj.hideSomething();
 			});
 		},
 		// public updateData method
-		updateData: function(content) {
-			return this.each(function() {
+		updateData: function (content) {
+			return this.each(function () {
 				var $this = $(this);
 				var obj = $this.data(namespace);
 				obj.updateData(content);
 			});
 		},
 		// public destroy method
-		destroy: function() {
-			return this.each(function() {
+		destroy: function () {
+			return this.each(function () {
 				var $this = $(this);
 				var obj = $this.data(namespace);
 				obj.destroy();
@@ -185,7 +185,7 @@
 	};
 
 	// plugin association, code from http://docs.jquery.com/Plugins/Authoring
-	$.fn.pluginKickstart = function(method) {
+	$.fn.pluginKickstart = function (method) {
 
 		// Method calling logic
 		if (methods[method]) {
