@@ -9,7 +9,7 @@
 
 		// default settings for plugin
 		base.settings = {
-			'defaultText': 'top',
+			'defaultText': 'lorum',
 			'inside': 0
 		};
 
