@@ -21,13 +21,13 @@
 		base.obj = obj; // actual DOM element
 		base.$obj = $(obj); // jQuery version of DOM element
 		
-		base.animate = false;
-		base.animateIntervalId = 0;
-
-		base.settings.inside++;
-		
 		base.init = function () {
 			// init code
+			base.animate = false;
+			base.animateIntervalId = 0;
+
+			base.settings.inside++;
+
 			base.bindEvents();
 		}
 
