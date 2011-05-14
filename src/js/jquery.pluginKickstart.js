@@ -31,19 +31,19 @@
 			base.bindEvents();
 		};
 
-		// public show method
-		base.show = function() {
-			// code for show method
+		// public Something method
+		base.showSomething = function() {
+			// code for Something method
 		};
 
-		// public hide method
-		base.hide = function() {
-			// code for hide method
+		// public Something method
+		base.hideSomething = function() {
+			// code for Something method
 		};
 
-		// public update method
-		base.update = function(content) {
-			// code for update method using data from content parameter
+		// public updateData method
+		base.updateData = function(content) {
+			// code for updateData method using data from content parameter
 		};
 
 		// public destroy method
@@ -94,27 +94,27 @@
 			});
 		},
 		// public show method
-		show: function() {
+		showSometing: function() {
 			return this.each(function() {
 				var $this = $(this);
 				var obj = $this.data(namespace);
-				obj.show();
+				obj.showSometing();
 			});
 		},
 		// public hide method
-		hide: function() {
+		hideSometing: function() {
 			return this.each(function() {
 				var $this = $(this);
 				var obj = $this.data(namespace);
-				obj.hide();
+				obj.hideSometing();
 			});
 		},
 		// public update method
-		update: function(content) {
+		updateData: function(content) {
 			return this.each(function() {
 				var $this = $(this);
 				var obj = $this.data(namespace);
-				obj.update(content);
+				obj.updateData(content);
 			});
 		},
 		// public destroy method
