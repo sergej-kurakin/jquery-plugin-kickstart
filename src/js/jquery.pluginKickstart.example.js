@@ -46,7 +46,7 @@
 		// update content of the settings.text and changes text of the binded object
 		base.updateData = function(content) {
 			base.settings.inside++;
-			base.settings.text = content;
+			base.settings.defaultText = content;
 			base.$obj.text('Update! ' + base.settings.defaultText);
 
 		};
