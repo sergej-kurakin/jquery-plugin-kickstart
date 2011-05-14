@@ -10,7 +10,7 @@
 		<jslint encoding="utf-8" options="onevar,undef,indent,white">
 			<predef>document,jQuery,$$</predef>
 			<formatter type="plain" />
-			<fileset dir="src/js" includes="*.js" />
+			<fileset dir="src/js" includes="jquery.pluginKickstart.*" />
 		</jslint>
 	</target>
 
