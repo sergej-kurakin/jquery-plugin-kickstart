@@ -12,7 +12,7 @@
 			'defaultText': 'text'
 		};
 
-		// extending with options
+		// extending with settings parameter
 		if (settings) {
 			$.extend(base.settings, settings);
 		}
