@@ -7,8 +7,8 @@
 	</target>
 
 	<target name="jslint" depends="init-task" description="Run JSLint on JavaScript files">
-		<jslint encoding="utf-8" options="onevar,undef,indent,white">
-			<predef>document,jQuery,$$</predef>
+		<jslint encoding="utf-8" options="undef,indent,white">
+			<predef>document,jQuery,$$,clearInterval,setInterval</predef>
 			<formatter type="plain" />
 			<fileset dir="src/js" includes="jquery.pluginKickstart.*" />
 		</jslint>
