@@ -112,12 +112,12 @@
 					base.click();
 				});
 
-			base.$obj.bind('mouseover.' + namespace,
+			base.$obj.bind('mouseenter.' + namespace,
 				function() {
 					base.over();
 				});
 
-			base.$obj.bind('mouseout.' + namespace,
+			base.$obj.bind('mouseleave.' + namespace,
 				function() {
 					base.out();
 				});
