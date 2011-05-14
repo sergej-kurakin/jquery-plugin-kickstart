@@ -27,7 +27,7 @@
 		base.settings.inside++;
 		
 		base.init = function () {
-		// init code
+			// init code
 		}
 
 		// does nothing except increment
