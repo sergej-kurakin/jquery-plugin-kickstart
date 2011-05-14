@@ -20,6 +20,7 @@
 
 		base.obj = obj; // actual DOM element
 		base.$obj = $(obj); // jQuery version of DOM element
+		base.$colorSpan = null;
 
 		// init method
 		base.init = function () {
@@ -29,25 +30,31 @@
 
 			base.settings.inside++;
 
+			base.$colorSpan = $('<span />').text('#FFFFFF').hide();
+			base.$obj.after(base.$colorSpan);
+
+			base.$obj.text(base.settings.defaultText);
+
 			base.bindEvents();
 		};
 
 		// does nothing except increment
 		base.showSomething = function() {
 			base.settings.inside++;
+			base.$colorSpan.show();
 		};
 
 		// does nothing except increment, changes text of the binded object
 		base.hideSomething = function() {
 			base.settings.inside++;
-			base.$obj.text('Hide!' + base.settings.defaultText);
+			base.$colorSpan.hide();
 		};
 
 		// update content of the settings.text and changes text of the binded object
 		base.updateData = function(content) {
 			base.settings.inside++;
 			base.settings.defaultText = content;
-			base.$obj.text('Update! ' + base.settings.defaultText);
+			base.$obj.text(base.settings.defaultText);
 
 		};
 		
@@ -92,7 +99,9 @@
 		// just do anmation
 		base.animateObj = function() {
 			if (base.animate) {
-				base.$obj.css('color', base.randomColor());
+				var color = base.randomColor();
+				base.$colorSpan.text(color);
+				base.$obj.css('color', color);
 			}
 		};
 

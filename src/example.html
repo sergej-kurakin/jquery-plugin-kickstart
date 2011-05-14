@@ -6,37 +6,48 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<script type="text/javascript" src="js/jquery-1.4.4.js"></script>
 	<script type="text/javascript" src="js/jquery.pluginKickstart.example.js"></script>
-	<title>jQuery Plugin KickStart</title>
+	<title>jQuery Plugin KickStart Example</title>
+	<style type="text/css">
+		.likeLink { text-decoration: underline; color: blue; cursor: pointer; }
+		.needHover { text-decoration: underline; cursor: pointer; }
+	</style>
 </head>
 
 <body>
 	<div>
-		<div><span id="test1">X</span></div>
-		<div><span id="test2">Y</span></div>
-		<div><span id="test3">Z</span></div>
+		<div>Lorum: <span class="needHover" id="test1">X1</span></div>
+		<div>My Text: <span class="needHover" id="test2">X2</span></div>
+		<div>Other Text With Colors: <span class="needHover" id="test3">X3</span></div>
+		<div><span class="likeLink" id="stop4">Click Here</span> to hide Colors: <span class="needHover" id="test4">X4</span></div>
+		<div><span class="likeLink" id="change5">Click Here</span> to change Text: <span class="needHover" id="test5">X5</span></div>
 	</div>
-	<div id="stop2">stop 2</div>
 	<script type="text/javascript">
 		$(function(){
-			$('#test1').pluginKickstart({
-				'defaultText': 'mytext1'
-			});
-			$('#test1').pluginKickstart('hideSomething').pluginKickstart('showSomething').text('XX');
-			$('#test1').pluginKickstart('updateData', 'text11');
-			$('#test1').pluginKickstart('showSomething');
+			$('#test1').pluginKickstart();
 
-
-			$('#test2').pluginKickstart();
-			$('#test2').pluginKickstart('hideSomething').pluginKickstart('showSomething').text('YY');
-			$('#test2').pluginKickstart('updateData', 'text22');
-			$('#test2').pluginKickstart('showSomething');
-
-			$('#stop2').click(function(){
-				$('#test2').pluginKickstart('destroy');
+			$('#test2').pluginKickstart({
+				'defaultText': 'My Text'
 			});
 
-			$('#test3').pluginKickstart();
-			$('#test3').pluginKickstart('hideSomething');
+			$('#test3').pluginKickstart({
+				'defaultText': 'Other Text'
+			}).pluginKickstart('showSomething');
+
+			$('#test4').pluginKickstart({
+				'defaultText': 'Click There'
+			}).pluginKickstart('showSomething');
+
+			$('#stop4').click(function(){
+				$('#test4').pluginKickstart('hideSomething');
+			});
+
+			$('#test5').pluginKickstart({
+				'defaultText': 'Old Text'
+			}).pluginKickstart('showSomething');
+
+			$('#change5').click(function(){
+				$('#test5').pluginKickstart('updateData', 'New Text');
+			});
 
 		});
 	</script>
