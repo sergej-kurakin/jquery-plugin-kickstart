@@ -9,7 +9,7 @@
 
 		// default settings for plugin
 		base.settings = {
-			'text': 'top',
+			'defaultText': 'top',
 			'inside': 0
 		};
 
@@ -29,7 +29,7 @@
 			base.settings.inside++;
 
 			base.bindEvents();
-		}
+		};
 
 		// does nothing except increment
 		base.show = function() {
@@ -39,14 +39,14 @@
 		// does nothing except increment, changes text of the binded object
 		base.hide = function() {
 			base.settings.inside++;
-			base.$obj.text('Hide!' + base.settings.text);
+			base.$obj.text('Hide!' + base.settings.defaultText);
 		};
 
 		// update content of the settings.text and changes text of the binded object
 		base.update = function(content) {
 			base.settings.inside++;
 			base.settings.text = content;
-			base.$obj.text('Update! ' + base.settings.text);
+			base.$obj.text('Update! ' + base.settings.defaultText);
 
 		};
 
@@ -54,7 +54,7 @@
 		base.click = function() {
 			base.settings.inside++;
 			base.$obj.css('color', 'red');
-		}
+		};
 
 		// method called on mouseover: starts animation with interval
 		base.over = function() {
@@ -65,21 +65,21 @@
 				base.animateObj();
 			},
 			100);
-		}
+		};
 
 		// method called on mouseout, stops animation
 		base.out = function() {
 			base.settings.inside++;
 			base.animate = false;
 			clearInterval(base.animateIntervalId);
-		}
+		};
 
 		// just do anmation
 		base.animateObj = function() {
 			if (base.animate) {
 				base.$obj.css('color', base.randomColor());
 			}
-		}
+		};
 
 		// collor randomaizer
 		base.randomColor = function() {
@@ -87,7 +87,7 @@
 				return Math.floor(Math.random() * 256).toString(16);
 			}
 			return "#" + c() + c() + c();
-		}
+		};
 
 		// should destroy objects, done to test unbind
 		base.destroy = function() {
@@ -96,7 +96,7 @@
 				clearInterval(base.animateIntervalId);
 			}
 			base.$obj.unbind('.' + namespace);
-		}
+		};
 
 		// event binder inside method
 		base.bindEvents = function() {
@@ -115,7 +115,7 @@
 				function() {
 					base.out();
 				});
-		}
+		};
 
 		base.init();
 
