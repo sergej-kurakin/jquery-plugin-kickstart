@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<script type="text/javascript" src="js/jquery-1.4.4.js"></script>
+	<script type="text/javascript" src="js/jquery.pluginKickstart.example.js"></script>
+	<title>jQuery Plugin KickStart</title>
+</head>
+
+<body>
+	<div>
+		<div><span id="test1">X</span></div>
+		<div><span id="test2">Y</span></div>
+		<div><span id="test3">Z</span></div>
+	</div>
+	<div id="stop2">stop 2</div>
+	<script type="text/javascript">
+		$(function(){
+			$('#test1').pluginKickstart({
+				'text': 'mytext1'
+			});
+			$('#test1').pluginKickstart('hide').pluginKickstart('show').text('XX');
+			//$('#test1').pluginKickstart('show');
+			$('#test1').pluginKickstart('update', 'text11');
+			$('#test1').pluginKickstart('show');
+
+
+			$('#test2').pluginKickstart();
+			$('#test2').pluginKickstart('hide').pluginKickstart('show').text('YY');
+			//$('#test2').pluginKickstart('show');
+			$('#test2').pluginKickstart('update', 'text22');
+			$('#test2').pluginKickstart('show');
+
+			$('#stop2').click(function(){
+				$('#test2').pluginKickstart('destroy');
+			});
+
+			$('#test3').pluginKickstart();
+			$('#test3').pluginKickstart('hide');
+
+		});
+	</script>
+</body>
+</html>
