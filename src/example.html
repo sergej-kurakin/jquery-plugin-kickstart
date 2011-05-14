@@ -21,24 +21,22 @@
 			$('#test1').pluginKickstart({
 				'defaultText': 'mytext1'
 			});
-			$('#test1').pluginKickstart('hide').pluginKickstart('show').text('XX');
-			//$('#test1').pluginKickstart('show');
-			$('#test1').pluginKickstart('update', 'text11');
-			$('#test1').pluginKickstart('show');
+			$('#test1').pluginKickstart('hideSomething').pluginKickstart('showSomething').text('XX');
+			$('#test1').pluginKickstart('updateData', 'text11');
+			$('#test1').pluginKickstart('showSomething');
 
 
 			$('#test2').pluginKickstart();
-			$('#test2').pluginKickstart('hide').pluginKickstart('show').text('YY');
-			//$('#test2').pluginKickstart('show');
-			$('#test2').pluginKickstart('update', 'text22');
-			$('#test2').pluginKickstart('show');
+			$('#test2').pluginKickstart('hideSomething').pluginKickstart('showSomething').text('YY');
+			$('#test2').pluginKickstart('updateData', 'text22');
+			$('#test2').pluginKickstart('showSomething');
 
 			$('#stop2').click(function(){
 				$('#test2').pluginKickstart('destroy');
 			});
 
 			$('#test3').pluginKickstart();
-			$('#test3').pluginKickstart('hide');
+			$('#test3').pluginKickstart('hideSomething');
 
 		});
 	</script>

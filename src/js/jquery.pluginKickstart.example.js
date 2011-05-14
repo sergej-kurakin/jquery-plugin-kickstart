@@ -13,7 +13,7 @@
 			'inside': 0
 		};
 
-		// extending with options
+		// extending with settings parameter
 		if (settings) {
 			$.extend(base.settings, settings);
 		}
@@ -33,28 +33,40 @@
 		};
 
 		// does nothing except increment
-		base.show = function() {
+		base.showSomething = function() {
 			base.settings.inside++;
 		};
 
 		// does nothing except increment, changes text of the binded object
-		base.hide = function() {
+		base.hideSomething = function() {
 			base.settings.inside++;
 			base.$obj.text('Hide!' + base.settings.defaultText);
 		};
 
 		// update content of the settings.text and changes text of the binded object
-		base.update = function(content) {
+		base.updateData = function(content) {
 			base.settings.inside++;
 			base.settings.text = content;
 			base.$obj.text('Update! ' + base.settings.defaultText);
 
 		};
+		
+		// should destroy objects, done to test unbind
+		base.destroy = function() {
+			if (base.animate) {
+				base.animate = false;
+				clearInterval(base.animateIntervalId);
+			}
+			base.$obj.unbind('.' + namespace);
+		};
 
 		// method called on mouse click
 		base.click = function() {
 			base.settings.inside++;
-			base.$obj.css('color', 'red');
+			if (base.animate) {
+				base.animate = false;
+				clearInterval(base.animateIntervalId);
+			}
 		};
 
 		// method called on mouseover: starts animation with interval
@@ -71,8 +83,10 @@
 		// method called on mouseout, stops animation
 		base.out = function() {
 			base.settings.inside++;
-			base.animate = false;
-			clearInterval(base.animateIntervalId);
+			if (base.animate) {
+				base.animate = false;
+				clearInterval(base.animateIntervalId);
+			}
 		};
 
 		// just do anmation
@@ -88,15 +102,6 @@
 				return Math.floor(Math.random() * 256).toString(16);
 			}
 			return "#" + c() + c() + c();
-		};
-
-		// should destroy objects, done to test unbind
-		base.destroy = function() {
-			if (base.animate) {
-				base.animate = false;
-				clearInterval(base.animateIntervalId);
-			}
-			base.$obj.unbind('.' + namespace);
 		};
 
 		// event binder inside method
@@ -118,6 +123,7 @@
 				});
 		};
 
+		// calling init
 		base.init();
 
 	}
@@ -133,31 +139,31 @@
 				$this.data(namespace, obj);
 			});
 		},
-		// show method
-		show: function() {
+		// public showSomething method
+		showSomething: function() {
 			return this.each(function() {
 				var $this = $(this);
 				var obj = $this.data(namespace);
-				obj.show();
+				obj.showSomething();
 			});
 		},
-		// hide method
-		hide: function() {
+		// public hideSomething method
+		hideSomething: function() {
 			return this.each(function() {
 				var $this = $(this);
 				var obj = $this.data(namespace);
-				obj.hide();
+				obj.hideSomething();
 			});
 		},
-		// update method
-		update: function(content) {
+		// public updateData method
+		updateData: function(content) {
 			return this.each(function() {
 				var $this = $(this);
 				var obj = $this.data(namespace);
-				obj.update(content);
+				obj.updateData(content);
 			});
 		},
-		// destroy method
+		// public destroy method
 		destroy: function() {
 			return this.each(function() {
 				var $this = $(this);
