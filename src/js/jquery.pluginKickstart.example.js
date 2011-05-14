@@ -21,6 +21,7 @@
 		base.obj = obj; // actual DOM element
 		base.$obj = $(obj); // jQuery version of DOM element
 
+		// init method
 		base.init = function () {
 			// init code
 			base.animate = false;
