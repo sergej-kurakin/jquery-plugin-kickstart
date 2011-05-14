@@ -7,13 +7,28 @@
 		
 		var base = this;
 		
-        base.settings = settings;
+		// default settings for plugin
+        base.settings = {
+			'text': 'top',
+            'inside': 0
+        };
+		
+		// extending with options
+		if (settings) {
+			$.extend(base.settings, settings);
+		}
+		
 		base.obj = obj; // actual DOM element
         base.$obj = $(obj); // jQuery version of DOM element
+		
         base.animate = false;
         base.animateIntervalId = 0;
 
         base.settings.inside++;
+		
+		base.init = function () {
+			// init code
+		}
 
         // does nothing except increment
         base.show = function() {
@@ -108,20 +123,9 @@
     // methods that are available public
     var methods = {
         // public initiation with settings
-        init: function(options) {
+        init: function(settings) {
 
             return this.each(function() {
-
-                // default settings for plugin
-                var settings = {
-                    'text': 'top',
-                    'inside': 0
-                };
-
-                // extending with options
-                if (options) {
-                    $.extend(settings, options);
-                }
 
                 var $this = $(this);
 
