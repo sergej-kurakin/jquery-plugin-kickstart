@@ -4,22 +4,22 @@
 
 	// plugin class that does all work
 	function myPluginKickstart(obj, settings) {
-		
+
 		var base = this;
-		
+
 		// default settings for plugin
 		base.settings = {
 			'defaultText': 'text'
 		};
-		
+
 		// extending with options
 		if (settings) {
 			$.extend(base.settings, settings);
 		}
-		
+
 		base.obj = obj; // actual DOM element
 		base.$obj = $(obj); // jQuery version of DOM element
-		
+
 		// init method
 		base.init = function () {
 			// init code
@@ -31,32 +31,22 @@
 			base.bindEvents();
 		};
 
-		// does nothing except increment
+		// public show method
 		base.show = function() {
 			// code for show method
 		};
 
-		// does nothing except increment, changes text of the binded object
+		// public hide method
 		base.hide = function() {
 			// code for hide method
 		};
 
-		// update content of the settings.text and changes text of the binded object
+		// public update method
 		base.update = function(content) {
 			// code for update method using data from content parameter
 		};
 
-		// method called on mouse click
-		base.click = function() {
-			// code for click method
-		};
-
-		// example method called on mouseover: starts animation with interval
-		base.over = function() {
-			base.$obj.css('color', 'red');
-		};
-
-		// should destroy objects, done to test unbind
+		// public destroy method
 		base.destroy = function() {
 			// code for object destruction
 			
@@ -64,12 +54,17 @@
 			base.$obj.unbind('.' + namespace);
 		};
 
-		// example  method called on mouseout, stops animation
+		// private method, used from within this plugin
+		base.over = function() {
+			base.$obj.css('color', 'red');
+		};
+
+		// private method, used from within this plugin
 		base.out = function() {
 			base.$obj.css('color', 'black');
 		};
 
-		// event binder inside method, example code how to bind events with namespace
+		// private method, used from within this plugin
 		base.bindEvents = function() {
 			base.$obj.bind('mouseover.' + namespace,
 				function() {
@@ -82,6 +77,7 @@
 				});
 		};
 
+		// calling init
 		base.init();
 
 	}
