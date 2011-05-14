@@ -28,6 +28,7 @@
 		
 		base.init = function () {
 			// init code
+			base.bindEvents();
 		}
 
 		// does nothing except increment
@@ -116,7 +117,7 @@
 				});
 		}
 
-		base.bindEvents();
+		base.init();
 
 	}
 
