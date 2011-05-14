@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="jQueryPluginKickstart" default="main" basedir="./">
+	<description>Autimation/Build file for jQuery Plugin Kickstart Project</description>
+
+	<target name="init-task" description="Initializes JAVA JSLint">
+		<taskdef name="jslint" classname="com.googlecode.jslint4java.ant.JSLintTask" classpath="build/bin/jslint4java-1.4.7.jar" />
+	</target>
+
+	<target name="jslint" depends="init-task" description="Run JSLint on JavaScript files">
+		<jslint encoding="utf-8" options="onevar,undef,indent,white">
+			<predef>document,jQuery,$$</predef>
+			<formatter type="plain" />
+			<fileset dir="src/js" includes="*.js" />
+		</jslint>
+	</target>
+
+	<target name="main" depends="init-task" description="Main task, doest nothing"></target>
+
+</project>
