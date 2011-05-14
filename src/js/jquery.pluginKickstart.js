@@ -9,8 +9,7 @@
 		
 		// default settings for plugin
 		base.settings = {
-			'text': 'top',
-			'inside': 0
+			'defaultText': 'text'
 		};
 		
 		// extending with options
@@ -21,91 +20,57 @@
 		base.obj = obj; // actual DOM element
 		base.$obj = $(obj); // jQuery version of DOM element
 		
+		// init method
 		base.init = function () {
 			// init code
-			base.animate = false;
-			base.animateIntervalId = 0;
-
-			base.settings.inside++;
-
+			
+			// example call of text method
+			base.$obj.text(base.settings.defaultText);
+			
+			// example call of internal method to bind example events on DOM element
 			base.bindEvents();
-		}
+		};
 
 		// does nothing except increment
 		base.show = function() {
-			base.settings.inside++;
+			// code for show method
 		};
 
 		// does nothing except increment, changes text of the binded object
 		base.hide = function() {
-			base.settings.inside++;
-			base.$obj.text('Hide!' + base.settings.text);
+			// code for hide method
 		};
 
 		// update content of the settings.text and changes text of the binded object
 		base.update = function(content) {
-			base.settings.inside++;
-			base.settings.text = content;
-			base.$obj.text('Update! ' + base.settings.text);
-
+			// code for update method using data from content parameter
 		};
 
 		// method called on mouse click
 		base.click = function() {
-			base.settings.inside++;
-			base.$obj.css('color', 'red');
-		}
+			// code for click method
+		};
 
-		// method called on mouseover: starts animation with interval
+		// example method called on mouseover: starts animation with interval
 		base.over = function() {
-			base.settings.inside++;
-			base.animate = true;
-
-			base.animateIntervalId = setInterval(function() {
-				base.animateObj();
-			},
-			100);
-		}
-
-		// method called on mouseout, stops animation
-		base.out = function() {
-			base.settings.inside++;
-			base.animate = false;
-			clearInterval(base.animateIntervalId);
-		}
-
-		// just do anmation
-		base.animateObj = function() {
-			if (base.animate) {
-				base.$obj.css('color', base.randomColor());
-			}
-		}
-
-		// collor randomaizer
-		base.randomColor = function() {
-			function c() {
-				return Math.floor(Math.random() * 256).toString(16);
-			}
-			return "#" + c() + c() + c();
-		}
+			base.$obj.css('color', 'red');
+		};
 
 		// should destroy objects, done to test unbind
 		base.destroy = function() {
-			if (base.animate) {
-				base.animate = false;
-				clearInterval(base.animateIntervalId);
-			}
+			// code for object destruction
+			
+			// example of unbind call to unbind only events from this plugin
 			base.$obj.unbind('.' + namespace);
-		}
+		};
 
-		// event binder inside method
+		// example  method called on mouseout, stops animation
+		base.out = function() {
+			base.$obj.css('color', 'black');
+		};
+
+		// event binder inside method, example code how to bind events with namespace
 		base.bindEvents = function() {
-
-			base.$obj.bind('click.' + namespace,
-				function() {
-					base.click();
-				});
-
 			base.$obj.bind('mouseover.' + namespace,
 				function() {
 					base.over();
@@ -115,7 +80,7 @@
 				function() {
 					base.out();
 				});
-		}
+		};
 
 		base.init();
 
@@ -132,7 +97,7 @@
 				$this.data(namespace, obj);
 			});
 		},
-		// show method
+		// public show method
 		show: function() {
 			return this.each(function() {
 				var $this = $(this);
@@ -140,7 +105,7 @@
 				obj.show();
 			});
 		},
-		// hide method
+		// public hide method
 		hide: function() {
 			return this.each(function() {
 				var $this = $(this);
@@ -148,7 +113,7 @@
 				obj.hide();
 			});
 		},
-		// update method
+		// public update method
 		update: function(content) {
 			return this.each(function() {
 				var $this = $(this);
@@ -156,7 +121,7 @@
 				obj.update(content);
 			});
 		},
-		// destroy method
+		// public destroy method
 		destroy: function() {
 			return this.each(function() {
 				var $this = $(this);

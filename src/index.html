@@ -12,35 +12,20 @@
 
 <body>
 	<div>
-		<div><span id="test1">X</span></div>
-		<div><span id="test2">Y</span></div>
-		<div><span id="test3">Z</span></div>
+		<div>Example 1: Init: <span id="test1">X</span></div>
+		<div>Example 3: Init and Unbind: <span id="test2">Y</span></div>
 	</div>
-	<div id="stop2">stop 2</div>
+	<div id="stop2">Click to unbind Example 2</div>
 	<script type="text/javascript">
 		$(function(){
 			$('#test1').pluginKickstart({
-				'text': 'mytext1'
+				'defaultText': 'mytext1'
 			});
-			$('#test1').pluginKickstart('hide').pluginKickstart('show').text('XX');
-			//$('#test1').pluginKickstart('show');
-			$('#test1').pluginKickstart('update', 'text11');
-			$('#test1').pluginKickstart('show');
-			
-			
+
 			$('#test2').pluginKickstart();
-			$('#test2').pluginKickstart('hide').pluginKickstart('show').text('YY');
-			//$('#test2').pluginKickstart('show');
-			$('#test2').pluginKickstart('update', 'text22');
-			$('#test2').pluginKickstart('show');
-			
 			$('#stop2').click(function(){
 				$('#test2').pluginKickstart('destroy');
 			});
-			
-			$('#test3').pluginKickstart();
-			$('#test3').pluginKickstart('hide');
-			
 		});
 	</script>
 </body>
