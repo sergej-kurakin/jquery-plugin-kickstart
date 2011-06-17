@@ -9,8 +9,41 @@ and open the template in the editor.
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<script type="text/javascript" src="../../src/js/jquery-1.5.2.js"></script>
 		<script type="text/javascript" src="../../src/js/jquery.pluginKickstart.js"></script>
+		<link href="visual.css" rel="stylesheet" type="text/css" />
 	</head>
 	<body>
-		<div>TODO write content</div>
+		<div>
+			
+			<div>
+				<h2>Test 1: Init Test, Parameter Test, Bind Test.</h2>
+				<p>After <span class="activate1">clicking here</span> &quot;<em>X</em>&quot; should become &quot;<em>mytext1</em>&quot;<br />
+				On mouse enter &quot;<em>mytext1</em>&quot; should change color, on mouse leave color should restore.</p>
+				<p><strong>Test area:</strong> <span id="test1">X</span></p>
+			</div>
+			
+			<div>
+				<h2>Test 2: Unbind/Destroy Test</h2>
+				<p>On mouse over &quot;<em>text</em>&quot; should change color, on mouse leave color should restore.<br />
+				After <span class="activate2">clicking here</span> it should become inactive.</p>
+				<p><strong>Test area:</strong> <span id="test2">Y</span></p>
+			</div>
+			
+		</div>
+		
+		<script type="text/javascript">
+			$(function(){
+				$('.activate1').click(function(){
+					$('#test1').pluginKickstart({
+						'defaultText': 'mytext1'
+					});
+				});
+				
+				$('#test2').pluginKickstart();
+				$('.activate2').click(function(){
+					$('#test2').pluginKickstart('destroy');
+				});
+				
+			});
+		</script>
 	</body>
 </html>
