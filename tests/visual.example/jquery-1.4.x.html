@@ -11,17 +11,24 @@
 		<div>
 			<h1>Tests Example with jQuery 1.4.x</h1>
 			<div>
-				<h2>Test 1: Init Test, Parameter Test, Bind Test.</h2>
-				<p>After <span class="activate1">clicking here</span> &quot;<em>X</em>&quot; should become &quot;<em>mytext1</em>&quot;<br />
-				On mouse enter &quot;<em>mytext1</em>&quot; should change color, on mouse leave color should restore.</p>
+				<h2>Test 1: Init Test, Bind Test.</h2>
+				<p>After <span class="activate1">clicking here</span> &quot;<em>X</em>&quot; should become &quot;<em>lorum</em>&quot;<br />
+				On mouse enter &quot;<em>lorum</em>&quot; should change color, on mouse leave color should stop changing.</p>
 				<p><strong>Test area:</strong> <span id="test1">X</span></p>
 			</div>
 			
 			<div>
+				<h2>Test 2: Init Test, Bind Test, Parameters Test.</h2>
+				<p>After <span class="activate2">clicking here</span> &quot;<em>X</em>&quot; should become &quot;<em>mytext99</em>&quot;<br />
+				On mouse enter &quot;<em>mytext99</em>&quot; should change color, on mouse leave color should stop changing.</p>
+				<p><strong>Test area:</strong> <span id="test2">X</span></p>
+			</div>
+			
+			<div>
 				<h2>Test 2: Unbind/Destroy Test</h2>
-				<p>On mouse over &quot;<em>text</em>&quot; should change color, on mouse leave color should restore.<br />
-				After <span class="activate2">clicking here</span> it should become inactive.</p>
-				<p><strong>Test area:</strong> <span id="test2">Y</span></p>
+				<p>On mouse over &quot;<em>mytext30</em>&quot; should change color, on mouse leave color should restore.<br />
+				After <span class="activate3">clicking here</span> it should become inactive but with last changed color.</p>
+				<p><strong>Test area:</strong> <span id="test3">Y</span></p>
 			</div>
 			
 		</div>
@@ -29,14 +36,20 @@
 		<script type="text/javascript">
 			$(function(){
 				$('.activate1').click(function(){
-					$('#test1').pluginKickstart({
-						'defaultText': 'mytext1'
+					$('#test1').pluginKickstart();
+				});
+				
+				$('.activate2').click(function(){
+					$('#test2').pluginKickstart({
+						'defaultText': 'mytext99'
 					});
 				});
 				
-				$('#test2').pluginKickstart();
-				$('.activate2').click(function(){
-					$('#test2').pluginKickstart('destroy');
+				$('#test3').pluginKickstart({
+					'defaultText': 'mytext30'
+				});
+				$('.activate3').click(function(){
+					$('#test3').pluginKickstart('destroy');
 				});
 				
 			});
