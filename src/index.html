@@ -12,21 +12,7 @@
 
 <body>
 	<div>
-		<div>Example 1: Init: <span id="test1">X</span></div>
-		<div>Example 3: Init and Unbind: <span id="test2">Y</span></div>
+		<p>jQuery Plugin Kickstart</p>
 	</div>
-	<div id="stop2">Click to unbind Example 2</div>
-	<script type="text/javascript">
-		$(function(){
-			$('#test1').pluginKickstart({
-				'defaultText': 'mytext1'
-			});
-
-			$('#test2').pluginKickstart();
-			$('#stop2').click(function(){
-				$('#test2').pluginKickstart('destroy');
-			});
-		});
-	</script>
 </body>
 </html>
