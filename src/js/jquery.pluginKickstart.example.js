@@ -178,7 +178,6 @@
 				var $this = $(this);
 				var obj = $this.data(namespace);
 				obj.destroy();
-				delete obj;
 				$this.removeData(namespace);
 			});
 		}
