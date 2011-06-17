@@ -1,18 +1,21 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
 <html>
 	<head>
 		<title>jQuery Plugin Kickstart Tests</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	</head>
-	<body>
-		<div>
-			<h1>jQuery Plugin Kickstart Tests</h1>
-			<p>Example of visual test</p>
-			<ul>
-				<li><a href="jquery-1.4.x.html">jQuery 1.4.x</a></li>
-				<li><a href="jquery-1.5.x.html">jQuery 1.5.x</a></li>
-				<li><a href="jquery-1.6.x.html">jQuery 1.6.x</a></li>
-			</ul>
-		</div>
-	</body>
+	<frameset>
+
+		<frameset cols="25%,75%">
+			  <frame src="menu.html" />
+			  <frame src="visual.html" name="tests" />
+		</frameset>
+		
+		<noframes>
+			<body>
+				<p>No Frames?</p>
+			</body>
+		</noframes>
+
+	</frameset>
 </html>
