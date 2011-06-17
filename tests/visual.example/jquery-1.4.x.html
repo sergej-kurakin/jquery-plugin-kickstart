@@ -17,12 +17,30 @@
 				<p><strong>Test area:</strong> <span id="test1">X</span></p>
 			</div>
 			
+			<script type="text/javascript">
+				$(function(){
+					$('.activate1').click(function(){
+						$('#test1').pluginKickstart();
+					});
+				});
+			</script>
+			
 			<div>
 				<h2>Test 2: Init Test, Bind Test, Parameters Test.</h2>
 				<p>After <span class="activate2">clicking here</span> &quot;<em>X</em>&quot; should become &quot;<em>mytext99</em>&quot;<br />
 				On mouse enter &quot;<em>mytext99</em>&quot; should change color, on mouse leave color should stop changing.</p>
 				<p><strong>Test area:</strong> <span id="test2">X</span></p>
 			</div>
+			
+			<script type="text/javascript">
+				$(function(){
+					$('.activate2').click(function(){
+						$('#test2').pluginKickstart({
+							'defaultText': 'mytext99'
+						});
+					});
+				});
+			</script>
 			
 			<div>
 				<h2>Test 3: Unbind/Destroy Test</h2>
@@ -31,12 +49,32 @@
 				<p><strong>Test area:</strong> <span id="test3">Y</span></p>
 			</div>
 			
+			<script type="text/javascript">
+				$(function(){
+					$('#test3').pluginKickstart({
+						'defaultText': 'mytext30'
+					});
+
+					$('.activate3').click(function(){
+						$('#test3').pluginKickstart('destroy');
+					});
+				});
+			</script>
+			
 			<div>
 				<h2>Test 4: showSomething method Test</h2>
 				<p>On mouse over &quot;<em>Other Text</em>&quot; should change color, on mouse leave color should stop changing.<br />
 				After executing showSomething special &lt;span&gt; should appear in which color code will be showen.</p>
 				<p><strong>Test area:</strong> <span class="needHover" id="test4">X3</span></p>
 			</div>
+			
+			<script type="text/javascript">
+				$(function(){
+					$('#test4').pluginKickstart({
+						'defaultText': 'Other Text'
+					}).pluginKickstart('showSomething');
+				});
+			</script>
 			
 			<div>
 				<h2>Test 5: hideSomething method Test</h2>
@@ -46,12 +84,32 @@
 				<p><strong>Test area:</strong> <span class="needHover" id="test5">X3</span></p>
 			</div>
 			
+			<script type="text/javascript">
+				$(function(){
+					$('#test5').pluginKickstart({
+						'defaultText': 'Other Hide'
+					}).pluginKickstart('showSomething');
+
+					$('.activate5').click(function(){
+						$('#test5').pluginKickstart('hideSomething');
+					});
+				});
+			</script>
+			
 			<div>
 				<h2>Test 6: click (internal) method Test</h2>
 				<p>On mouse over &quot;<em>Click Text</em>&quot; should change color, on mouse leave color should stop changing.<br />
 				After clicking on &quot;<em>Click Text</em>&quot; should stop changing. On next mouse over color change should continue.</p>
 				<p><strong>Test area:</strong> <span class="needHover" id="test6">X3</span></p>
 			</div>
+			
+			<script type="text/javascript">
+				$(function(){
+					$('#test6').pluginKickstart({
+						'defaultText': 'Click Text'
+					});
+				});
+			</script>
 			
 			<div>
 				<h2>Test 7: updateData method Test</h2>
@@ -60,53 +118,18 @@
 				<p><strong>Test area:</strong> <span id="test7">Y</span></p>
 			</div>
 			
-		</div>
-		
-		<script type="text/javascript">
-			$(function(){
-				$('.activate1').click(function(){
-					$('#test1').pluginKickstart();
-				});
-				
-				$('.activate2').click(function(){
-					$('#test2').pluginKickstart({
-						'defaultText': 'mytext99'
+			<script type="text/javascript">
+				$(function(){
+					$('#test7').pluginKickstart({
+						'defaultText': 'Old Text'
+					});
+					
+					$('.activate7').click(function(){
+						$('#test7').pluginKickstart('updateData', 'New Text');
 					});
 				});
-				
-				$('#test3').pluginKickstart({
-					'defaultText': 'mytext30'
-				});
-				
-				$('.activate3').click(function(){
-					$('#test3').pluginKickstart('destroy');
-				});
-				
-				$('#test4').pluginKickstart({
-					'defaultText': 'Other Text'
-				}).pluginKickstart('showSomething');
-				
-				$('#test5').pluginKickstart({
-					'defaultText': 'Other Hide'
-				}).pluginKickstart('showSomething');
-				
-				$('.activate5').click(function(){
-					$('#test5').pluginKickstart('hideSomething');
-				});
-				
-				$('#test6').pluginKickstart({
-					'defaultText': 'Click Text'
-				});
-				
-				$('#test7').pluginKickstart({
-					'defaultText': 'Old Text'
-				});
-				
-				$('.activate7').click(function(){
-					$('#test7').pluginKickstart('updateData', 'New Text');
-				});
-				
-			});
-		</script>
+			</script>
+			
+		</div>
 	</body>
 </html>
