@@ -38,6 +38,14 @@
 				<p><strong>Test area:</strong> <span class="needHover" id="test4">X3</span></p>
 			</div>
 			
+			<div>
+				<h2>Test 5: hideSomething method Test</h2>
+				<p>On mouse over &quot;<em>Other Hide</em>&quot; should change color, on mouse leave color should stop changing.<br />
+				After executing showSomething special &lt;span&gt; should appear in which color code will be showen.<br />
+				After <span class="activate5">clicking here</span> &lt;span&gt; should dissappear, but colors still should change on mouse enter.</p>
+				<p><strong>Test area:</strong> <span class="needHover" id="test5">X3</span></p>
+			</div>
+			
 		</div>
 		
 		<script type="text/javascript">
@@ -62,6 +70,14 @@
 				$('#test4').pluginKickstart({
 					'defaultText': 'Other Text'
 				}).pluginKickstart('showSomething');
+				
+				$('#test5').pluginKickstart({
+					'defaultText': 'Other Hide'
+				}).pluginKickstart('showSomething');
+				
+				$('.activate5').click(function(){
+					$('#test5').pluginKickstart('hideSomething');
+				});
 				
 			});
 		</script>
