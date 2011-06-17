@@ -28,5 +28,44 @@
 			});
 		});
 	</script>
+	
+	<script type="text/javascript">
+		
+		var myClass1 = function  () {
+			this.text = 'zaza';
+			this.init();
+		}
+		
+		myClass1.prototype.test = function () {
+			console.log(this.text);
+		};
+		
+		myClass1.prototype.init = function () {
+			this.text = 'qqqqq';
+		};
+		
+		var myClass2 = function () {
+			this.text = '2222';
+		}
+		
+		myClass2.prototype = new myClass1 ();
+		
+		myClass2.prototype.test = function () {
+			console.log('1: ' + this.text);
+		};
+		
+		myClass2.prototype.test2 = function () {
+			console.log('2: ' + this.text);
+		};
+		
+		var o1 = new myClass1();
+		o1.test();
+		
+		var o2 = new myClass2();
+		o2.test();
+		o2.test2();
+		
+	</script>
+	
 </body>
 </html>
