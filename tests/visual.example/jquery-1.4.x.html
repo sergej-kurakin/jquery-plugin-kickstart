@@ -46,6 +46,13 @@
 				<p><strong>Test area:</strong> <span class="needHover" id="test5">X3</span></p>
 			</div>
 			
+			<div>
+				<h2>Test 6: click (internal) method Test</h2>
+				<p>On mouse over &quot;<em>Click Text</em>&quot; should change color, on mouse leave color should stop changing.<br />
+				After clicking on &quot;<em>Click Text</em>&quot; should stop changing. On next mouse over color change should continue.</p>
+				<p><strong>Test area:</strong> <span class="needHover" id="test6">X3</span></p>
+			</div>
+			
 		</div>
 		
 		<script type="text/javascript">
@@ -63,6 +70,7 @@
 				$('#test3').pluginKickstart({
 					'defaultText': 'mytext30'
 				});
+				
 				$('.activate3').click(function(){
 					$('#test3').pluginKickstart('destroy');
 				});
@@ -77,6 +85,10 @@
 				
 				$('.activate5').click(function(){
 					$('#test5').pluginKickstart('hideSomething');
+				});
+				
+				$('#test6').pluginKickstart({
+					'defaultText': 'Click Text'
 				});
 				
 			});
