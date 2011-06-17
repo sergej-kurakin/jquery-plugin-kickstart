@@ -53,6 +53,13 @@
 				<p><strong>Test area:</strong> <span class="needHover" id="test6">X3</span></p>
 			</div>
 			
+			<div>
+				<h2>Test 7: updateData method Test</h2>
+				<p>After <span class="activate7">clicking here</span> &quot;<em>Old Text</em>&quot; should change to &quot;<em>New Text</em>&quot;.<br />
+				Color changing on hover should still be active.</p>
+				<p><strong>Test area:</strong> <span id="test7">Y</span></p>
+			</div>
+			
 		</div>
 		
 		<script type="text/javascript">
@@ -89,6 +96,14 @@
 				
 				$('#test6').pluginKickstart({
 					'defaultText': 'Click Text'
+				});
+				
+				$('#test7').pluginKickstart({
+					'defaultText': 'Old Text'
+				});
+				
+				$('.activate7').click(function(){
+					$('#test7').pluginKickstart('updateData', 'New Text');
 				});
 				
 			});
