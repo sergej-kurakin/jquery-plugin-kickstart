@@ -3,4 +3,7 @@ jQuery Plugin KickStart with namespace for event binding, settings and methods.
 Current version is more like concept, rather a kickstart.
 
 The main goal: to find easy to use jQuery plugin structure with many methods, keeping all settings inside and using namespaces for event binding for quick standalone jQuery plugin development.
-Additional points: keep close to recommendations on Plugins Authoring from jQuery http://docs.jquery.com/Plugins/Authoring
+Additional points:
+* keep close to recommendations on Plugins Authoring from jQuery <http://docs.jquery.com/Plugins/Authoring>
+* learn how to use QUnit <http://docs.jquery.com/Qunit> for testing plugins
+* learn how to develop visual tests for testing plugins
