@@ -1,0 +1,306 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<title>jQuery Plugin Kickstart.Example Tests with jQuery 1.6.x</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script type="text/javascript" src="../../src/js/jquery-1.6.1.js"></script>
+		
+		<script type="text/javascript" src="http://code.jquery.com/qunit/qunit-git.js"></script>
+		<link href="http://code.jquery.com/qunit/qunit-git.css" rel="stylesheet" type="text/css" />
+		
+		<script type="text/javascript" src="../../src/js/jquery.pluginKickstart.example.js"></script>
+	</head>
+	<body>
+		<div>
+			<h1 id="qunit-header">Tests Example with jQuery 1.6.x</h1>
+			<h2 id="qunit-banner"></h2>
+			<div id="qunit-testrunner-toolbar"></div>
+			<h2 id="qunit-userAgent"></h2>
+			<ol id="qunit-tests"></ol>
+			<div id="qunit-fixture">test markup, will be hidden</div>
+		</div>
+		
+		<script type="text/javascript">
+			$(function(){
+				
+				module("simple.example");
+				
+				/**
+				 * Test 1
+				 */
+				test('init', function(){
+					expect(4);
+					
+					equal($('#test1').text(), "X", "We expect value to be X" );
+					
+					$('#test1').pluginKickstart();
+					
+					equal($('#test1').text(), "lorum", "We expect value to be lorum" );
+					
+					equal($('#test1').css('color'), 'rgb(0, 0, 0)', 'We expected black color');
+					
+					equal($('#test1').parent().find('span').length, 2, 'We expected two spans');
+				});
+				
+				/**
+				 * Test 2
+				 */
+				asyncTest('hover', function(){
+					
+					equal($('#test2').text(), "X", "We expect value to be X" );
+					
+					$('#test2').pluginKickstart();
+					
+					equal($('#test2').text(), "lorum", "We expect value to be lorum" );
+					
+					equal($('#test2').css('color'), 'rgb(0, 0, 0)', 'We expected black color');
+					
+					$('#test2').trigger('mouseenter');
+					
+					setTimeout(function(){
+						notEqual($('#test2').css('color'), 'rgb(0, 0, 0)', 'We expected not black color after mouse enter');
+						$('#test2').trigger('mouseleave');
+						notEqual($('#test2').css('color'), 'rgb(0, 0, 0)', 'We expected not black color after mouse leave');
+						start();
+					}, 200);
+				});
+				
+				/**
+				 * Test 3
+				 */
+				test('parameters', function(){
+					expect(3);
+					
+					equal($('#test3').text(), "X", "We expect value to be X" );
+					
+					$('#test3').pluginKickstart({
+						'defaultText': 'mytext99'
+					});
+					
+					equal($('#test3').text(), "mytext99", "We expect value to be mytext99" );
+					
+					var data = $('#test3').data('pluginKickstart');
+					equal(data.settings.defaultText, 'mytext99', "We expect value to be mytext99");
+				});
+				
+				/**
+				 * Test 4
+				 */
+				asyncTest('destroy', function(){
+					equal($('#test4').text(), "Y", "We expect value to be Y" );
+					
+					$('#test4').pluginKickstart({
+						'defaultText': 'mytext30'
+					});
+					
+					equal($('#test4').text(), "mytext30", "We expect value to be mytext99" );
+					
+					equal($('#test4').css('color'), 'rgb(0, 0, 0)', 'We expected black color');
+					
+					$('#test4').pluginKickstart('destroy');
+					
+					var data = $('#test4').data('pluginKickstart');
+					equal( data, undefined, "We expected value to be empty");
+					
+					$('#test4').trigger('mouseenter');
+					
+					setTimeout(function(){
+						equal($('#test4').css('color'), 'rgb(0, 0, 0)', 'We expected not black color after mouse enter');
+						$('#test4').trigger('mouseleave');
+						equal($('#test4').css('color'), 'rgb(0, 0, 0)', 'We expected not black color after mouse leave');
+						start();
+					}, 200);
+					
+				});
+				
+				/**
+				 * Test 5
+				 */
+				asyncTest('showSoemthing', function(){
+					equal($('#test5').text(), "X3", "We expect value to be X3" );
+					
+					$('#test5').pluginKickstart({
+						'defaultText': 'Other Text'
+					});
+					
+					equal($('#test5').text(), "Other Text", "We expect value to be Other Text" );
+					
+					equal($('#test5').css('color'), 'rgb(0, 0, 0)', 'We expected black color');
+					
+					$('#test5').pluginKickstart('showSomething');
+					
+					var showSpan = $('#test5').next();
+					
+					equal(showSpan.css('display'), 'block', 'We expected this span to be visibale');
+					equal(showSpan.text(), '#FFFFFF', 'We expected this span have text #FFFFFF');
+					
+					$('#test5').trigger('mouseenter');
+					
+					setTimeout(function(){
+						notEqual($('#test5').css('color'), 'rgb(0, 0, 0)', 'We expected not black color after mouse enter');
+						$('#test5').trigger('mouseleave');
+						notEqual($('#test5').css('color'), 'rgb(0, 0, 0)', 'We expected not black color after mouse leave');
+						
+						notEqual(showSpan.text(), '#FFFFFF', 'We expected this span have other text than #FFFFFF');
+						start();
+					}, 200);
+					
+				});
+				
+				/**
+				 * Test 6
+				 */
+				test('hideSomething', function() {
+					equal($('#test6').text(), "X3", "We expect value to be X3" );
+					
+					$('#test6').pluginKickstart({
+						'defaultText': 'Other Hide'
+					});
+					
+					equal($('#test6').text(), "Other Hide", "We expect value to be Other Hide" );
+					
+					$('#test6').pluginKickstart('showSomething');
+					
+					var showSpan = $('#test6').next();
+					
+					equal(showSpan.css('display'), 'block', 'We expected this span to be visibale');
+					
+					$('#test6').pluginKickstart('hideSomething');
+					
+					equal(showSpan.css('display'), 'none', 'We expected this span to be invisible');
+				});
+				
+				/**
+				 * Test 7
+				 */
+				asyncTest('click', function(){
+					equal($('#test7').text(), "X3", "We expect value to be X3" );
+					
+					$('#test7').pluginKickstart({
+						'defaultText': 'Click Text'
+					});
+					
+					equal($('#test7').text(), "Click Text", "We expect value to be Other Text" );
+					
+					equal($('#test7').css('color'), 'rgb(0, 0, 0)', 'We expected black color');
+					
+					$('#test7').trigger('mouseenter');
+					
+					setTimeout(function(){
+						notEqual($('#test7').css('color'), 'rgb(0, 0, 0)', 'We expected not black color after mouse enter');
+						$('#test7').trigger('click');
+						
+						var color1 = $('#test7').css('color');
+						
+						notEqual( color1, 'rgb(0, 0, 0)', 'We expected not black color after click');
+						
+						setTimeout(function(){
+							var color2 = $('#test7').css('color');
+							notEqual( color2, 'rgb(0, 0, 0)', 'We expected not black color after click and wait');
+							equal( color2, color1, 'We expected not black color after click and wait');
+							start();
+						},200);
+					}, 200);
+					
+				});
+				
+				
+				/**
+				 * Test 8
+				 */
+				test('updateData', function(){
+					equal($('#test8').text(), "Y", "We expect value to be Y" );
+					
+					$('#test8').pluginKickstart({
+						'defaultText': 'Old Text'
+					});
+					
+					equal($('#test8').text(), "Old Text", "We expect value to be Old Text" );
+					
+					$('#test8').pluginKickstart('updateData', 'New Text');
+					
+					equal($('#test8').text(), "New Text", "We expect value to be New Text" );
+					
+					var data = $('#test8').data('pluginKickstart');
+					equal(data.settings.defaultText, 'New Text', "We expect value to be New Text");
+				});
+				
+				/**
+				 * Test 9
+				 */
+				test('updateData', function(){
+					equal($('#test9a').text(), "Y1", "We expect value to be Y1" );
+					equal($('#test9b').text(), "Y2", "We expect value to be Y2" );
+					
+					$('.test9').pluginKickstart({
+						'defaultText': 'Old Text'
+					});
+					
+					equal($('#test9a').text(), "Old Text", "We expect value to be Old Text" );
+					equal($('#test9b').text(), "Old Text", "We expect value to be Old Text" );
+					
+					$('.test9').pluginKickstart('updateData', 'New Text');
+					
+					equal($('#test9a').text(), "New Text", "We expect value to be New Text" );
+					equal($('#test9b').text(), "New Text", "We expect value to be New Text" );
+					
+					var data1 = $('#test9a').data('pluginKickstart');
+					equal(data1.settings.defaultText, 'New Text', "We expect value to be New Text");
+					
+					var data2 = $('#test9b').data('pluginKickstart');
+					equal(data2.settings.defaultText, 'New Text', "We expect value to be New Text");
+				});
+				
+			});
+		</script>
+		
+		<div>
+			<div>
+				<h2>Test 1: init</h2>
+				<p><strong>Test area:</strong> <span id="test1">X</span></p>
+			</div>
+			
+			<div>
+				<h2>Test 2: hover</h2>
+				<p><strong>Test area:</strong> <span id="test2">X</span></p>
+			</div>
+			
+			<div>
+				<h2>Test 3: parameters</h2>
+				<p><strong>Test area:</strong> <span id="test3">X</span></p>
+			</div>
+			
+			<div>
+				<h2>Test 4: destroy</h2>
+				<p><strong>Test area:</strong> <span id="test4">Y</span></p>
+			</div>
+			
+			<div>
+				<h2>Test 5: showSomething</h2>
+				<p><strong>Test area:</strong> <span id="test5">X3</span></p>
+			</div>
+			
+			<div>
+				<h2>Test 6: hideSomething</h2>
+				<p><strong>Test area:</strong> <span id="test6">X3</span></p>
+			</div>
+			
+			<div>
+				<h2>Test 7: click</h2>
+				<p><strong>Test area:</strong> <span id="test7">X3</span></p>
+			</div>
+			
+			<div>
+				<h2>Test 8: updateData</h2>
+				<p><strong>Test area:</strong> <span id="test8">Y</span></p>
+			</div>
+			
+			<div>
+				<h2>Test 9: multiple updateData</h2>
+				<p><strong>Test area:</strong> <span class="test9" id="test9a">Y1</span></p>
+				<p><strong>Test area:</strong> <span class="test9" id="test9b">Y2</span></p>
+			</div>
+			
+		</div>
+	</body>
+</html>
