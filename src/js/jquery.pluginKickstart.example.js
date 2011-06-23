@@ -30,8 +30,9 @@
 
 			base.settings.inside++;
 
-			base.$colorSpan = $('<span />').text('#FFFFFF').hide();
+			base.$colorSpan = $('<span />').text('#FFFFFF');
 			base.$obj.after(base.$colorSpan);
+			base.$colorSpan.hide();
 
 			base.$obj.text(base.settings.defaultText);
 
