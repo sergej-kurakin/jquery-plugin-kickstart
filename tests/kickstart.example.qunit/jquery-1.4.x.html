@@ -132,7 +132,7 @@
 					
 					var showSpan = $('#test5').next();
 					
-					equal(showSpan.css('display'), 'block', 'We expected this span to be visibale');
+					equal(showSpan.css('display'), 'inline', 'We expected this span to be visibale');
 					equal(showSpan.text(), '#FFFFFF', 'We expected this span have text #FFFFFF');
 					
 					$('#test5').trigger('mouseenter');
@@ -164,7 +164,7 @@
 					
 					var showSpan = $('#test6').next();
 					
-					equal(showSpan.css('display'), 'block', 'We expected this span to be visibale');
+					equal(showSpan.css('display'), 'inline', 'We expected this span to be visibale');
 					
 					$('#test6').pluginKickstart('hideSomething');
 					
