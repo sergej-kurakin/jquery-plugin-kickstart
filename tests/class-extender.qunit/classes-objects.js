@@ -32,6 +32,11 @@ var myClass3 = function (name) {
 
 $.extendClass(myClass3, myClass1);
 
+myClass3.prototype.init = function (name) {
+	this.text = name + '?';
+	this.className = 'myClass3';
+};
+
 var o1 = new myClass1('One');
 
 var o2 = new myClass2('Two');

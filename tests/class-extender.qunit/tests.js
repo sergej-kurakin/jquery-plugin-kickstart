@@ -34,7 +34,7 @@ $(function(){
 
 		equal(o1.text, 'One');
 		equal(o2.text, 'Two');
-		equal(o3.text, 'Three');
+		equal(o3.text, 'Three?');
 	});
 	
 	/**
@@ -45,7 +45,7 @@ $(function(){
 
 		equal(o1.className, 'myClass1');
 		equal(o2.className, 'myClass2');
-		equal(o3.className, 'myClass1');
+		equal(o3.className, 'myClass3');
 	});
 
 });
