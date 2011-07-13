@@ -1,9 +1,18 @@
 $(function(){
 				
 	module("extender");
-
+	
 	/**
 	 * Test 1
+	 */
+	test('extendClass method', function(){
+		expect(1);
+
+		ok(($['extendClass']));
+	});
+
+	/**
+	 * Test 2
 	 */
 	test('class intances', function(){
 		expect(3);
