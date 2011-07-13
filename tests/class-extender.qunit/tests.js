@@ -31,5 +31,15 @@ $(function(){
 		equal(o1.text, 'One');
 		equal(o2.text, 'Two');
 	});
+	
+	/**
+	 * Test 4
+	 */
+	test('className member', function(){
+		expect(2);
+
+		equal(o1.className, 'myClass1');
+		equal(o2.className, 'myClass2');
+	});
 
 });
