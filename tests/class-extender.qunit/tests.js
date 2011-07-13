@@ -5,7 +5,7 @@ $(function(){
 	/**
 	 * Test 1
 	 */
-	test('init', function(){
+	test('class intances', function(){
 		expect(3);
 
 		ok(o1 instanceof myClass1);
