@@ -21,5 +21,15 @@ $(function(){
 		ok(o2 instanceof myClass1);
 		ok(o2 instanceof myClass2);
 	});
+	
+	/**
+	 * Test 3
+	 */
+	test('text member', function(){
+		expect(2);
+
+		equal(o1.text, 'One');
+		equal(o2.text, 'Two');
+	});
 
 });
