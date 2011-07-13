@@ -1,7 +1,7 @@
 /**
  * Parent
  */
-var myClass1 = function  (name) {
+var myClass1 = function (name) {
 	this.text = '';
 	this.className = 'myClass1';
 	this.init(name);
@@ -13,7 +13,7 @@ myClass1.prototype.init = function (name) {
 
 
 /**
- * Descendant
+ * Descendant of myClass1
  */
 var myClass2 = function (name) {
 	this.text = '';
