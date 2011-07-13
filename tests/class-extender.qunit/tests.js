@@ -15,31 +15,37 @@ $(function(){
 	 * Test 2
 	 */
 	test('class intances', function(){
-		expect(3);
+		expect(5);
 
 		ok(o1 instanceof myClass1);
+		
 		ok(o2 instanceof myClass1);
 		ok(o2 instanceof myClass2);
+		
+		ok(o3 instanceof myClass1);
+		ok(o3 instanceof myClass3);
 	});
 	
 	/**
 	 * Test 3
 	 */
 	test('text member', function(){
-		expect(2);
+		expect(3);
 
 		equal(o1.text, 'One');
 		equal(o2.text, 'Two');
+		equal(o3.text, 'Three');
 	});
 	
 	/**
 	 * Test 4
 	 */
 	test('className member', function(){
-		expect(2);
+		expect(3);
 
 		equal(o1.className, 'myClass1');
 		equal(o2.className, 'myClass2');
+		equal(o3.className, 'myClass1');
 	});
 
 });
