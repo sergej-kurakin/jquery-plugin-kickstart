@@ -51,7 +51,7 @@
 			// code for object destruction
 			
 			// example of unbind call to unbind only events from this plugin
-			base.$obj.off('.' + namespace);
+			base.$obj.unbind('.' + namespace);
 		};
 
 		// private method, used from within this plugin
@@ -66,12 +66,12 @@
 
 		// private method, used from within this plugin
 		base.bindEvents = function () {
-			base.$obj.on('mouseenter.' + namespace,
+			base.$obj.bind('mouseenter.' + namespace,
 				function () {
 					base.over();
 				});
 
-			base.$obj.on('mouseleave.' + namespace,
+			base.$obj.bind('mouseleave.' + namespace,
 				function () {
 					base.out();
 				});
@@ -128,7 +128,7 @@
 		}
 	};
 
-	// plugin association, code from http://learn.jquery.com/plugins/basic-plugin-creation/
+	// plugin association, code from http://docs.jquery.com/Plugins/Authoring
 	$.fn.pluginKickstart = function (method) {
 
 		// Method calling logic

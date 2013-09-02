@@ -3,12 +3,12 @@
 	<head>
 		<title>jQuery Plugin Kickstart QUnit Tests with jQuery 1.6.x</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<script type="text/javascript" src="../../src/js/jquery-1.6.1.js"></script>
+		<script type="text/javascript" src="../../src/js/jquery-1.6.4.js"></script>
 		
 		<script type="text/javascript" src="http://code.jquery.com/qunit/qunit-git.js"></script>
 		<link href="http://code.jquery.com/qunit/qunit-git.css" rel="stylesheet" type="text/css" />
 		
-		<script type="text/javascript" src="../../src/js/jquery.pluginKickstart.js"></script>
+		<script type="text/javascript" src="../../src/js/jquery.pluginKickstart.bind.js"></script>
 	</head>
 	<body>
 		<div>
@@ -30,7 +30,7 @@
 				test('Init Method and defaultText Setting', function(){
 					expect(3);
 					
-					equals( $('#test1').text(), "X", "We expect value to be X" );
+					equal( $('#test1').text(), "X", "We expect value to be X" );
 					
 					$('#test1').pluginKickstart({
 						'defaultText': 'mytext1'
@@ -38,9 +38,9 @@
 					
 					var data = $('#test1').data('pluginKickstart');
 					
-					equals( data.settings.defaultText, "mytext1", "We expect value to be mytext1" );
+					equal( data.settings.defaultText, "mytext1", "We expect value to be mytext1" );
 					
-					equals( $('#test1').text(), "mytext1", "We expect value to be mytext1" );
+					equal( $('#test1').text(), "mytext1", "We expect value to be mytext1" );
 				});
 				
 				/**
@@ -65,7 +65,7 @@
 					expect(2);
 					
 					$('#test3').pluginKickstart();
-					equals($('#test3').text(), "text", "We expect value to be text" );
+					equal($('#test3').text(), "text", "We expect value to be text" );
 
 					$('#test3').pluginKickstart('destroy');
 
