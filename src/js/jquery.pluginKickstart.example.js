@@ -65,7 +65,7 @@
 				base.animate = false;
 				clearInterval(base.animateIntervalId);
 			}
-			base.$obj.unbind('.' + namespace);
+			base.$obj.off('.' + namespace);
 		};
 
 		// method called on mouse click
@@ -117,17 +117,17 @@
 		// event binder inside method
 		base.bindEvents = function () {
 
-			base.$obj.bind('click.' + namespace,
+			base.$obj.on('click.' + namespace,
 				function () {
 					base.click();
 				});
 
-			base.$obj.bind('mouseenter.' + namespace,
+			base.$obj.on('mouseenter.' + namespace,
 				function () {
 					base.over();
 				});
 
-			base.$obj.bind('mouseleave.' + namespace,
+			base.$obj.on('mouseleave.' + namespace,
 				function () {
 					base.out();
 				});

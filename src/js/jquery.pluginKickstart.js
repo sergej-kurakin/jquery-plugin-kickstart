@@ -51,7 +51,7 @@
 			// code for object destruction
 			
 			// example of unbind call to unbind only events from this plugin
-			base.$obj.unbind('.' + namespace);
+			base.$obj.off('.' + namespace);
 		};
 
 		// private method, used from within this plugin
@@ -66,12 +66,12 @@
 
 		// private method, used from within this plugin
 		base.bindEvents = function () {
-			base.$obj.bind('mouseenter.' + namespace,
+			base.$obj.on('mouseenter.' + namespace,
 				function () {
 					base.over();
 				});
 
-			base.$obj.bind('mouseleave.' + namespace,
+			base.$obj.on('mouseleave.' + namespace,
 				function () {
 					base.out();
 				});
