@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<title>jQuery Plugin Kickstart QUnit Tests with jQuery 1.6.x</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script type="text/javascript" src="../../src/js/jquery-1.9.1.js"></script>
+		
+		<script type="text/javascript" src="http://code.jquery.com/qunit/qunit-git.js"></script>
+		<link href="http://code.jquery.com/qunit/qunit-git.css" rel="stylesheet" type="text/css" />
+		
+		<script type="text/javascript" src="../../src/js/jquery.pluginKickstart.js"></script>
+	</head>
+	<body>
+		<div>
+			<h1 id="qunit-header">Tests with jQuery 1.9.x</h1>
+			<h2 id="qunit-banner"></h2>
+			<div id="qunit-testrunner-toolbar"></div>
+			<h2 id="qunit-userAgent"></h2>
+			<ol id="qunit-tests"></ol>
+		</div>
+		
+		<script type="text/javascript">
+			$(function(){
+				
+				module("simple");
+				
+				/**
+				 * Test 1
+				 */
+				test('Init Method and defaultText Setting', function(){
+					expect(3);
+					
+					equal( $('#test1').text(), "X", "We expect value to be X" );
+					
+					$('#test1').pluginKickstart({
+						'defaultText': 'mytext1'
+					});
+					
+					var data = $('#test1').data('pluginKickstart');
+					
+					equal( data.settings.defaultText, "mytext1", "We expect value to be mytext1" );
+					
+					equal( $('#test1').text(), "mytext1", "We expect value to be mytext1" );
+				});
+				
+				/**
+				 * Test 2
+				 */
+				test('Color Change on Hover', function(){
+					expect(3);
+					$('#test2').pluginKickstart();
+					
+					equal( $('#test2').css('color'), 'rgb(0, 0, 0)', 'We expected black color');
+					$('#test2').trigger('mouseenter');
+					equal( $('#test2').css('color'), 'rgb(255, 0, 0)', 'We expected red color');
+					$('#test2').trigger('mouseleave');
+					equal( $('#test2').css('color'), 'rgb(0, 0, 0)', 'We expected black color');
+					
+				});
+				
+				/**
+				 * Test 3
+				 */
+				test('Destory Method', function(){
+					expect(2);
+					
+					$('#test3').pluginKickstart();
+					equal($('#test3').text(), "text", "We expect value to be text" );
+
+					$('#test3').pluginKickstart('destroy');
+
+					var data = $('#test3').data('pluginKickstart');
+					equal( data, undefined, "We expected value to be empty");
+					
+					
+				});
+			});
+		</script>
+		
+		<div id="qunit-fixture">
+			<div>
+				<h2>Test 1: Init Method and defaultText Setting</h2>
+				<p><strong>Test area:</strong> <span id="test1">X</span></p>
+			</div>
+			
+			<div>
+				<h2>Test 2: Color Change on Hover</h2>
+				<p><strong>Test area:</strong> <span id="test2">X</span></p>
+			</div>
+			
+			<div>
+				<h2>Test 3: Destory Method</h2>
+				<p><strong>Test area:</strong> <span id="test3">Y</span></p>
+			</div>
+			
+		</div>
+	</body>
+</html>
