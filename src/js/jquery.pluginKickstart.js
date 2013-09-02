@@ -128,7 +128,7 @@
 		}
 	};
 
-	// plugin association, code from http://docs.jquery.com/Plugins/Authoring
+	// plugin association, code from http://learn.jquery.com/plugins/basic-plugin-creation/
 	$.fn.pluginKickstart = function (method) {
 
 		// Method calling logic
